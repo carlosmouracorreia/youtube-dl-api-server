@@ -32,8 +32,11 @@ def get_videos(url, extra_params):
     }
     ydl_params.update(extra_params)
     ydl = SimpleYDL(ydl_params)
-    res = ydl.extract_info(url, download=False)
-    return res
+    try:
+        res = ydl.extract_info(url, download=False)
+        return res
+    except e:
+        return None
 
 
 def flatten_result(result):
@@ -144,7 +147,7 @@ def get_result():
 @set_access_control
 def info():
     url = request.args['url']
-    result = get_result()
+    result = get_result() or {}
     key = 'info'
     if query_bool(request.args.get('flatten'), 'flatten', False):
         result = flatten_result(result)
