@@ -35,7 +35,7 @@ def get_videos(url, extra_params):
     try:
         res = ydl.extract_info(url, download=False)
         return res
-    except e:
+    except Exception as e:
         return None
 
 
