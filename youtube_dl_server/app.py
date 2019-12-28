@@ -28,7 +28,6 @@ def get_videos(url, extra_params):
     ydl_params = {
         'extract_flat': True,
         'skip_download': True,
-        'format': 'worst',
         'cachedir': False,
         'logger': current_app.logger.getChild('youtube-dl'),
     }
